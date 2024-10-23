@@ -43,13 +43,15 @@ public class DAO {
         statement.setString (1 , user.getEmail());
         statement.setString (2 , user.getSenha());
         ResultSet result = statement.executeQuery ();
-        while (result.next ()) {
-            user.setId (result.getInt (1));
-            user.setUserName (result.getString (2));
-            user.setSenha (result.getString (3));
-            user.setTelefone (result.getString (4));
-            user.setEmail (result.getString (5));
-            user.setCep(result.getString (6));
+        if (result.next()) {
+            user.setId(result.getInt(1));
+            user.setUserName(result.getString(2));
+            user.setSenha(result.getString(3));
+            user.setTelefone(result.getString(4));
+            user.setEmail(result.getString(5));
+            user.setCep(result.getString(6));
+        } else {
+            throw new SQLException();
         }
 
         result.close ();

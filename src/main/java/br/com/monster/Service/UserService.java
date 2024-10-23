@@ -11,9 +11,9 @@ public class UserService {
 
     public Login cadastro(Cadastro cadastro) throws SQLException {
 
-        Login login = new Login(cadastro.getEmail(), cadastro.getSenha());
+        Login login = new Login(cadastro.getSenha(),cadastro.getEmail());
 
-        d.cadastro(cadastro);
+        //d.cadastro(cadastro);
         d.login(login);
 
         return login;
@@ -21,7 +21,7 @@ public class UserService {
     }
 
     public Login login (String email, String senha) throws SQLException{
-        Login login = new Login(email,senha);
+        Login login = new Login(senha,email);
 
         d.login(login);
 
