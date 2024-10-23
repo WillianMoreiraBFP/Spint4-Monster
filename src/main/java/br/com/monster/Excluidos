@@ -1,0 +1,7 @@
+DAO{
+1-Função getDados: não faz sentido requisitar os dados do usurio se ja foi feito loguin
+2-Função getTel: não faz sentido requisitar só o telefone, uma vez que ja tem todos os dados na hora de fazer o login
+3-Função getCep: não faz sentido requisitar só o cep, uma vez que ja tem todos os dados na hora de fazer o login
+4-Função getEmail: não faz sentido requisitar só o email, uma vez que ja tem todos os dados na hora de fazer o login
+
+}
