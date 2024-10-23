@@ -20,9 +20,7 @@ public class VeiculoService {
     public List<Veiculo> cadastarVeiculo(int id, Veiculo veiculo) throws SQLException{
         List<Veiculo> v;
 
-        if (validarplaca(veiculo.getPlaca())){
-            d.cadastroVeiculo(veiculo);
-        }
+        d.cadastroVeiculo(veiculo);
         v = d.getListaVeiculo(id);
 
         return v;
@@ -37,11 +35,5 @@ public class VeiculoService {
         return v;
     }
 
-
-
-    //// Método para validar a placa do veiculo
-    private boolean validarplaca(String placa){
-        return placa.length() == 7;
-    }
 
 }
