@@ -68,9 +68,9 @@ public class Main {
         System.out.println ("Escreva o ID do historico");
         conexao.deletarHistorico (sc.nextInt ());
         System.out.println ("Escreva o ID do veiculo");
-        conexao.deletarVeiculo (sc.nextInt ());
+        conexao.deleteVeiculo(sc.nextInt ());
         System.out.println ("Escreva o ID do veiculo");
-        conexao.deletarVeiculo (sc.nextInt ());
+        conexao.deleteVeiculo(sc.nextInt ());
         conexao.deletar (test1);
 
 

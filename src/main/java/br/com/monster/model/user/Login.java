@@ -1,8 +1,14 @@
 package br.com.monster.model.user;
 
 
+import br.com.monster.DAO.DAO;
+
 public class Login extends User {
     private int id;
+
+    public Login() {
+    }
+
 
     public Login(String senha, String email) {
         setSenha(senha);

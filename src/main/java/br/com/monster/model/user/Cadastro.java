@@ -14,7 +14,7 @@ public class Cadastro extends User {
         setSenha(senha);
         setTelefone(telefone);
         setEmail(email);
-        setLogradouro (logradouro);
+        setCep(logradouro);
         setBairro (bairro);
         setLocalidade (localidade);
         setUf (uf);
