@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class UserService {
     DAO d = new DAO();
 
-    public Login cadastro(Cadastro cadastro) throws SQLException {
+    public Login cadastroService (Cadastro cadastro) throws SQLException {
 
         Login login = new Login(cadastro.getSenha(),cadastro.getEmail());
 
@@ -20,25 +20,25 @@ public class UserService {
 
     }
 
-    public Login login (String email, String senha) throws SQLException{
-        Login login = new Login(senha,email);
+    public Login loginService (Login user) throws SQLException{
+        Login login = new Login(user.getSenha (),user.getEmail ());
 
         d.login(login);
 
         return login;
     }
 
-    public void update (int id, String nome, String cep, String telefone, String email, String senha) throws SQLException{
+    public void updateService(Login login) throws SQLException{
 
-        d.updateNome(id,nome);
-        d.updatetCep(id, cep);
-        d.updateTel(id, telefone);
-        d.updatetEmail(id, email);
-        d.updateSenha(id, senha);
+        d.updateNome(login.getId (), login.getUserName ());
+        d.updatetCep(login.getId (), login.getCep ());
+        d.updateTel(login.getId (), login.getTelefone ());
+        d.updatetEmail(login.getId (), login.getEmail ());
+        d.updateSenha(login.getId (), login.getSenha ());
 
     }
 
-    public void delete (int id) throws SQLException{
+    public void deleteService (int id) throws SQLException{
         d.deleteUser(id);
     }
 

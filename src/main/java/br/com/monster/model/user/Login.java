@@ -9,6 +9,9 @@ public class Login extends User {
     public Login() {
     }
 
+    public Login(int id) {
+        this.id = id;
+    }
 
     public Login(String senha, String email) {
         setSenha(senha);

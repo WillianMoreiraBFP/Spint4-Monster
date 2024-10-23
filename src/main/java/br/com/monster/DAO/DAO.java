@@ -119,6 +119,7 @@ public class DAO {
 
     }
 
+
     public void updatetEmail(int id, String email) throws SQLException {
         String sql = "UPDATE t_user SET email = ? WHERE id_user = ?";
         conexaoJDBC.conectar ();
