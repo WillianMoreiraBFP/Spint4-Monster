@@ -13,7 +13,7 @@ public class UserService {
 
         Login login = new Login(cadastro.getSenha(),cadastro.getEmail());
 
-        //d.cadastro(cadastro);
+        d.cadastro(cadastro);
         d.login(login);
 
         return login;
@@ -26,6 +26,10 @@ public class UserService {
         d.login(login);
 
         return login;
+    }
+
+    public Login getService (int id) throws SQLException{
+        return d.getDados(id);
     }
 
     public void updateService(Login login) throws SQLException{

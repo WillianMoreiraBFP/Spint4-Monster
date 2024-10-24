@@ -1,12 +1,11 @@
 DAO{
-1-Função getDados: não faz sentido requisitar os dados do usurio se ja foi feito loguin
-2-Função getTel: não faz sentido requisitar só o telefone, uma vez que ja tem todos os dados na hora de fazer o login
-3-Função getCep: não faz sentido requisitar só o cep, uma vez que ja tem todos os dados na hora de fazer o login
-4-Função getEmail: não faz sentido requisitar só o email, uma vez que ja tem todos os dados na hora de fazer o login
-5-Função getVeiculo: não vai ser utilizado
-6-Função deleteTel: não sera utilizado pelo front
-7-Função deletetCep: não sera utilizado pelo front
-8-Função deletetEmial: não sera utilizado pelo front
-9-Metodo para validar e formatar telefone: sera feito no front-end
+1-Função getTel: não faz sentido requisitar só o telefone, uma vez que ja tem todos os dados na hora de fazer o login
+2-Função getCep: não faz sentido requisitar só o cep, uma vez que ja tem todos os dados na hora de fazer o login
+3-Função getEmail: não faz sentido requisitar só o email, uma vez que ja tem todos os dados na hora de fazer o login
+4-Função getVeiculo: não vai ser utilizado
+5-Função deleteTel: não sera utilizado pelo front
+6-Função deletetCep: não sera utilizado pelo front
+7-Função deletetEmial: não sera utilizado pelo front
+8-Metodo para validar e formatar telefone: sera feito no front-end
 
 }
