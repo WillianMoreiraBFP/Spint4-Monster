@@ -1,7 +1,9 @@
 package br.com.monster.model.veiculo;
 
 import br.com.monster.model.user.Login;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
 public class Veiculo {
     private int idUser;
     private int id;

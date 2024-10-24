@@ -17,22 +17,15 @@ public class VeiculoService {
         return v;
     }
 
-    public List<Veiculo> cadastarVeiculo(int id, Veiculo veiculo) throws SQLException{
-        List<Veiculo> v;
+    public void cadastarVeiculo(Veiculo veiculo) throws SQLException{
 
         d.cadastroVeiculo(veiculo);
-        v = d.getListaVeiculo(id);
 
-        return v;
     }
 
-    public List<Veiculo> delete (int id) throws SQLException{
-        List<Veiculo> v;
+    public void delete (String placa) throws SQLException{
+        d.deleteVeiculo(placa);
 
-        d.deleteVeiculo(id);
-        v = d.getListaVeiculo(id);
-
-        return v;
     }
 
 

@@ -176,12 +176,14 @@ public class DAO {
 
     }
 
-    //Veiculo:Veiculo/CadastroVeiculo/Histrorico
+    //Veiculo:Veiculo/CadastroVeiculo
 
     //Cadastro
 
     public void cadastroVeiculo(Veiculo veiculo) throws SQLException {
-        String sql = "INSERT INTO t_veiculo (marca, modelo, ano, placa, id_user) VALUES (?, ?, ?, ?, ?, ?) ";
+        Veiculo v = new Veiculo();
+
+        String sql = "INSERT INTO t_veiculo (marca, modelo, ano, placa, id_user) VALUES (?, ?, ?, ?, ?) ";
 
         conexaoJDBC.conectar();
         Connection conexao = conexaoJDBC.getConexao();
@@ -211,7 +213,6 @@ public class DAO {
         conexaoJDBC.conectar();
         Connection conexao = conexaoJDBC.getConexao();
 
-        System.out.println("Consultando dados na tabela, aguarde!!");
         Statement statement = conexao.createStatement();
         ResultSet result = statement.executeQuery(instrucaoSQL);
 
@@ -227,8 +228,8 @@ public class DAO {
         return v;
     }
 
-    public void deleteVeiculo(int Id) throws SQLException {
-        String sql = "DELETE FROM t_veiculo WHERE id_veiculo = " + Id;
+    public void deleteVeiculo(String placa) throws SQLException {
+        String sql = "DELETE FROM t_veiculo WHERE placa = " + "'" + placa + "'";
         conexaoJDBC.conectar();
         Connection conexao = conexaoJDBC.getConexao();
 
