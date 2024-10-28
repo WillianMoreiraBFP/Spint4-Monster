@@ -9,14 +9,14 @@ import jakarta.ws.rs.core.*;
 import java.sql.SQLException;
 
 
-@Consumes(MediaType.APPLICATION_JSON)
-@Produces(MediaType.APPLICATION_JSON)
 @Path("usuarios")
 public class UserResource {
 
 
     @POST
     @Path("cadastro")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response cadastrar(Cadastro cadastro) {
         UserService userService = new UserService ();
 
@@ -24,11 +24,15 @@ public class UserResource {
             Login login = userService.cadastroService (cadastro);
             return Response.ok (login).build ();
 
-        } catch (SQLException e){
-            if (e.getErrorCode() == 1) { // ORA-00001: unique constraint violated
-                return Response.status(Response.Status.CONFLICT).build(); // 409 Conflict
+        } catch (SQLException e) {
+            if (e.getErrorCode () == 1) {
+                return Response.status (Response.Status.CONFLICT)
+                        .entity ("{\"error\":\"Usuário já cadastrado.\"}")
+                        .build ();
             } else {
-                return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("{\"error\":\"Erro inesperado: " + e.getMessage() + "\"}").build(); // 500 Internal Server Error
+                return Response.status (Response.Status.INTERNAL_SERVER_ERROR)
+                        .entity ("{\"error\":\"Erro inesperado: " + e.getMessage () + "\"}")
+                        .build ();
             }
         }
     }
@@ -36,15 +40,16 @@ public class UserResource {
 
     @POST
     @Path("login")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response login(Login user) {
         UserService userService = new UserService ();
 
         try {
-            Login login = userService.loginService (user); // Este método preenche o objeto user
+            Login login = userService.loginService (user);
 
-            // Retorne os dados do loginService como JSON
-            return Response.ok(login).build(); // Retorna o objeto Login como JSON
-        } catch (SQLException e) {
+            return Response.ok(login).build();
+        }catch (SQLException e) {
             return Response.status(Response.Status.UNAUTHORIZED)
                     .entity("{\"error\":\"Usuário não encontrado ou senha incorreta.\"}")
                     .build();
@@ -57,34 +62,39 @@ public class UserResource {
 
     @GET
     @Path("getDados/{id}")
-    public Response getDados(@PathParam ("id")int id){
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getDados(@PathParam("id") int id) {
         UserService userService = new UserService ();
 
         try {
-            Login login = userService.getService(id);
-            return Response.ok(login).build();
+            Login login = userService.getService (id);
+            return Response.ok (login).build ();
 
         } catch (SQLException e) {
-            return Response.status(Response.Status.UNAUTHORIZED).build();
+            return Response.status (Response.Status.NOT_FOUND)
+                    .entity ("{\"error\":\"Usuário não encontrado.\"}")
+                    .build ();
         } catch (Exception e) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+            return Response.status (Response.Status.INTERNAL_SERVER_ERROR).build ();
         }
     }
 
 
 
-    @POST
-    @Path ("update")
-    public Response update(Login user){
+    @PUT
+    @Path("update")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response update(Login user) {
         UserService userService = new UserService ();
 
         try {
             userService.updateService (user);
-            return Response.accepted().build();
+            return Response.accepted ().build ();
         } catch (SQLException e) {
-            return Response.status(Response.Status.UNAUTHORIZED).build ();
+            return Response.status (Response.Status.BAD_REQUEST)
+                    .entity ("{\"error\":\"Erro ao atualizar dados.\"}")
+                    .build ();
         }
-
     }
 
     @DELETE
@@ -96,7 +106,9 @@ public class UserResource {
             userService.deleteService (id);
             return Response.noContent ().build ();
         } catch (SQLException e) {
-            return Response.status(Response.Status.UNAUTHORIZED).build ();
+            return Response.status (Response.Status.NOT_FOUND)
+                    .entity ("{\"error\":\"Usuário não encontrado.\"}")
+                    .build ();
         }
     }
 

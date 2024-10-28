@@ -8,15 +8,15 @@ import jakarta.ws.rs.core.Response;
 
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
-@Consumes(MediaType.APPLICATION_JSON)
-@Produces(MediaType.APPLICATION_JSON)
 @Path("veiculos")
 public class VeiculoResource {
     VeiculoService veiculoService = new VeiculoService();
 
     @GET
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("listar/{id}")
     public Response listarVeiculos(@PathParam("id")int id) {
         try {
@@ -37,6 +37,8 @@ public class VeiculoResource {
 
     @POST
     @Path("cadastrar")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response cadastarVeiculo(Veiculo veiculo){
         try {
             veiculoService.cadastarVeiculo(veiculo);
