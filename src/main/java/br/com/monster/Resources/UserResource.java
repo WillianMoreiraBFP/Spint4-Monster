@@ -61,13 +61,13 @@ public class UserResource {
     }
 
     @GET
-    @Path("getDados/{id}")
+    @Path("getDados/{email}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getDados(@PathParam("id") int id) {
+    public Response getDados(@PathParam("email") String email) {
         UserService userService = new UserService ();
 
         try {
-            Login login = userService.getService (id);
+            Login login = userService.getService (email);
             return Response.ok (login).build ();
 
         } catch (SQLException e) {
@@ -98,12 +98,12 @@ public class UserResource {
     }
 
     @DELETE
-    @Path ("delete/{id}")
-    public Response delete(@PathParam ("id")int id){
+    @Path ("delete/{email}")
+    public Response delete(@PathParam ("email")String email){
         UserService userService = new UserService ();
 
         try {
-            userService.deleteService (id);
+            userService.deleteService (email);
             return Response.noContent ().build ();
         } catch (SQLException e) {
             return Response.status (Response.Status.NOT_FOUND)

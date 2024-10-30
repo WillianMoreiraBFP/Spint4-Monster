@@ -1,0 +1,1 @@
+web: java jar target/Spint4_Monster-4.0-SNAPSHOT.jar
