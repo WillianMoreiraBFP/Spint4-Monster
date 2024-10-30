@@ -17,10 +17,10 @@ public class VeiculoResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("listar/{id}")
-    public Response listarVeiculos(@PathParam("id")int id) {
+    @Path("listar/{email}")
+    public Response listarVeiculos(@PathParam("email")String email) {
         try {
-            List<Veiculo> list = veiculoService.listarVeiculo(id);
+            List<Veiculo> list = veiculoService.listarVeiculo(email);
 
             return Response.ok(list).build();
 
