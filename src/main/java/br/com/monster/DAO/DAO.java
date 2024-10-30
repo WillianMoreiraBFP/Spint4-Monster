@@ -59,12 +59,12 @@ public class DAO {
         conexao.close();
     }
 
-    public Login getDados(int id) throws SQLException {
-        String sql = "SELECT id_user, user_name, telefone, email, cep, senha FROM t_user WHERE id_user = ?";
+    public Login getDados(String email) throws SQLException {
+        String sql = "SELECT id_user, user_name, telefone, email, cep, senha FROM t_user WHERE email = ?";
         conexaoJDBC.conectar();
         Connection conexao = conexaoJDBC.getConexao();
         PreparedStatement statement = conexao.prepareStatement(sql);
-        statement.setInt(1, id);
+        statement.setString (1, email);
         ResultSet result = statement.executeQuery();
 
         Login login = new Login();
@@ -87,14 +87,14 @@ public class DAO {
         return login;
     }
 
-    public void updateNome(int id, String nome) throws SQLException {
-        String sql = "UPDATE t_user SET user_name = ? WHERE id_user = ?";
+    public void updateNome(String email, String nome) throws SQLException {
+        String sql = "UPDATE t_user SET user_name = ? WHERE email = ?";
         conexaoJDBC.conectar();
         Connection conexao = conexaoJDBC.getConexao();
 
         PreparedStatement statement = conexao.prepareStatement(sql);
         statement.setString(1, nome);
-        statement.setInt(2, id);
+        statement.setString (2, email);
         statement.execute();
 
         statement.close();
@@ -102,14 +102,14 @@ public class DAO {
 
     }
 
-    public void updateSenha(int id, String senha) throws SQLException {
-        String sql = "UPDATE t_user SET senha = ? WHERE id_user = ?";
+    public void updateSenha(String email, String senha) throws SQLException {
+        String sql = "UPDATE t_user SET senha = ? WHERE email = ?";
         conexaoJDBC.conectar();
         Connection conexao = conexaoJDBC.getConexao();
 
         PreparedStatement statement = conexao.prepareStatement(sql);
         statement.setString(1, senha);
-        statement.setInt(2, id);
+        statement.setString (2, email);
         statement.execute();
 
         statement.close();
@@ -117,14 +117,14 @@ public class DAO {
 
     }
 
-    public void updateTel(int id, String telefone) throws SQLException {
-        String sql = "UPDATE t_user SET telefone = ? WHERE id_user = ?";
+    public void updateTel(String email, String telefone) throws SQLException {
+        String sql = "UPDATE t_user SET telefone = ? WHERE email = ?";
         conexaoJDBC.conectar();
         Connection conexao = conexaoJDBC.getConexao();
 
         PreparedStatement statement = conexao.prepareStatement(sql);
         statement.setString(1, telefone);
-        statement.setInt(2, id);
+        statement.setString (2, email);
         statement.execute();
 
         statement.close();
@@ -132,14 +132,14 @@ public class DAO {
 
     }
 
-    public void updatetCep(int id, String cep) throws SQLException {
-        String sql = "UPDATE t_user SET cep = ? WHERE id_user = ?";
+    public void updatetCep(String email, String cep) throws SQLException {
+        String sql = "UPDATE t_user SET cep = ? WHERE email = ?";
         conexaoJDBC.conectar();
         Connection conexao = conexaoJDBC.getConexao();
 
         PreparedStatement statement = conexao.prepareStatement(sql);
         statement.setString(1, cep);
-        statement.setInt(2, id);
+        statement.setString (2, email);
         statement.execute();
 
         statement.close();
@@ -148,27 +148,27 @@ public class DAO {
     }
 
 
-    public void updatetEmail(int id, String email) throws SQLException {
-        String sql = "UPDATE t_user SET email = ? WHERE id_user = ?";
+    public void updatetEmail(String email2, String email) throws SQLException {
+        String sql = "UPDATE t_user SET email = ? WHERE email = ?";
         conexaoJDBC.conectar();
         Connection conexao = conexaoJDBC.getConexao();
 
         PreparedStatement statement = conexao.prepareStatement(sql);
         statement.setString(1, email);
-        statement.setInt(2, id);
+        statement.setString (2, email2);
         statement.execute();
 
         statement.close();
         conexao.close();
     }
 
-    public void deleteUser(int id) throws SQLException {
-        String sql = "DELETE FROM t_user WHERE id_user = ?";
+    public void deleteUser(String email) throws SQLException {
+        String sql = "DELETE FROM t_user WHERE email = ?";
         conexaoJDBC.conectar();
         Connection conexao = conexaoJDBC.getConexao();
 
         PreparedStatement statement = conexao.prepareStatement(sql);
-        statement.setInt(1, id);
+        statement.setString (1, email);
         statement.execute();
 
         statement.close();
@@ -180,7 +180,7 @@ public class DAO {
 
     //Cadastro
 
-    public void cadastroVeiculo(Veiculo veiculo) throws SQLException {
+    public void cadastroVeiculo(Veiculo veiculo, int id) throws SQLException {
         Veiculo v = new Veiculo();
 
         String sql = "INSERT INTO t_veiculo (marca, modelo, ano, placa, id_user) VALUES (?, ?, ?, ?, ?) ";
@@ -194,7 +194,7 @@ public class DAO {
         statement.setString(2, veiculo.getModelo());
         statement.setInt(3, veiculo.getAno());
         statement.setString(4, veiculo.getPlaca());
-        statement.setInt(5, veiculo.getIdUser());
+        statement.setInt (5, id);
 
         statement.executeUpdate();
 

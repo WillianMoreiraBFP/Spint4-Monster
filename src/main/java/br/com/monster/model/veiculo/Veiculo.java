@@ -1,10 +1,7 @@
 package br.com.monster.model.veiculo;
 
-import br.com.monster.model.user.Login;
-import jakarta.xml.bind.annotation.XmlRootElement;
-
 public class Veiculo {
-    private int idUser;
+    private String email;
     private int id;
     private String marca;
     private String modelo;
@@ -15,29 +12,29 @@ public class Veiculo {
     public Veiculo() {
     }
 
-    public Veiculo(String marca , String modelo , int ano , String placa , int idUser) {
+    public Veiculo(String marca , String modelo , int ano , String placa , String email) {
         this.marca = marca;
         this.modelo = modelo;
         this.ano = ano;
         this.placa = placa;
-        this.idUser = idUser;
+        this.email = email;
     }
 
-    public Veiculo(String marca , String modelo , int ano , String tipoMotor , String placa , int idUser) {
+    public Veiculo(String marca , String modelo , int ano , String tipoMotor , String placa , String email) {
         this.marca = marca;
         this.modelo = modelo;
         this.ano = ano;
         this.tipoMotor = tipoMotor;
         this.placa = placa;
-        this.idUser = idUser;
+        this.email = email;
     }
 
-    public int getIdUser() {
-        return idUser;
+    public String getEmail() {
+        return email;
     }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public int getId() {

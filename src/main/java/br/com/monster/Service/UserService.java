@@ -29,22 +29,22 @@ public class UserService {
         return login;
     }
 
-    public Login getService (int id) throws SQLException{
-        return d.getDados(id);
+    public Login getService (String email) throws SQLException{
+        return d.getDados(email);
     }
 
     public void updateService(Login login) throws SQLException{
 
-        d.updateNome(login.getId (), login.getUserName ());
-        d.updatetCep(login.getId (), login.getCep ());
-        d.updateTel(login.getId (), login.getTelefone ());
-        d.updatetEmail(login.getId (), login.getEmail ());
-        d.updateSenha(login.getId (), login.getSenha ());
+        d.updateNome(login.getEmail (), login.getUserName ());
+        d.updatetCep(login.getEmail (), login.getCep ());
+        d.updateTel(login.getEmail (), login.getTelefone ());
+        d.updatetEmail(login.getEmail (), login.getEmail ());
+        d.updateSenha(login.getEmail (), login.getSenha ());
 
     }
 
-    public void deleteService (int id) throws SQLException{
-        d.deleteUser(id);
+    public void deleteService (String email) throws SQLException{
+        d.deleteUser(email);
     }
 
 }
