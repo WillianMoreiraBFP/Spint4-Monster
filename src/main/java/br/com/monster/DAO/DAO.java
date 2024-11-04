@@ -9,7 +9,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DAO {
+public class DAO implements IDAO {
     ConexaoJDBC conexaoJDBC = new ConexaoJDBC();
 
     //User:Cadastro/Login
